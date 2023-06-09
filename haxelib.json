@@ -1,0 +1,15 @@
+{
+	"name": "inputAction",
+	"url": "https://github.com/MatseFR/inputAction",
+	"license": "MIT",
+	"tags": [ "openfl", "flash", "air", "js", "web", "cpp" ],
+	"description": "user input system based on CitrusEngine framework (as3)",
+	"version": "0.0.1",
+	"releasenote": "initial release",
+	"contributors": [ "matse" ],
+	"dependencies": {
+		"openfl":"",
+		"openfl-juggler":""
+	},
+	"classPath": "src"
+}
