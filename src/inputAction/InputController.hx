@@ -45,6 +45,7 @@ abstract class InputController implements IAnimatable
 	public function dispose():Void
 	{
 		this._action = null;
+		this._input = null;
 	}
 	
 	public function toString():String
