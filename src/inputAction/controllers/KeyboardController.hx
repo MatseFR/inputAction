@@ -1,9 +1,10 @@
 package inputAction.controllers;
-import inputAction.InputAction;
 import inputAction.InputController;
 import inputAction.controllers.KeyAction;
 import openfl.display.DisplayObject;
+import openfl.display.Stage;
 import openfl.events.KeyboardEvent;
+import openfl.text.TextField;
 import valeditor.utils.ReverseIterator;
 
 /**
@@ -26,6 +27,16 @@ class KeyboardController extends InputController
 		}
 		if (value != null && this._enabled)
 		{
+			if (Std.isOfType(value, Stage))
+			{
+				this._rootIsStage = true;
+				this._stage = cast value;
+			}
+			else
+			{
+				this._rootIsStage = false;
+				this._stage = null;
+			}
 			value.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 			value.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
 		}
@@ -55,6 +66,8 @@ class KeyboardController extends InputController
 	}
 
 	private var _keyActions:Map<Int, Array<KeyAction>> = new Map<Int, Array<KeyAction>>();
+	private var _rootIsStage:Bool;
+	private var _stage:Stage;
 
 	public function new(root:DisplayObject, id:String = "keyboard")
 	{
@@ -111,6 +124,21 @@ class KeyboardController extends InputController
 
 	private function onKeyDown(evt:KeyboardEvent):Void
 	{
+		if (this._rootIsStage)
+		{
+			if (this._stage.focus != null && (Std.isOfType(this._stage.focus, TextField) #if starling || Std.isOfType(this._stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
+			{
+				return;
+			}
+		}
+		else if (this._root.stage != null)
+		{
+			if (this._root.stage.focus != null && (Std.isOfType(this._root.stage.focus, TextField) #if starling || Std.isOfType(this._root.stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
+			{
+				return;
+			}
+		}
+		
 		var actions:Array<KeyAction> = this._keyActions[evt.keyCode];
 		if (actions == null) return;
 		
@@ -125,6 +153,21 @@ class KeyboardController extends InputController
 
 	private function onKeyUp(evt:KeyboardEvent):Void
 	{
+		if (this._rootIsStage)
+		{
+			if (this._stage.focus != null && (Std.isOfType(this._stage.focus, TextField) #if starling || Std.isOfType(this._stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
+			{
+				return;
+			}
+		}
+		else if (this._root.stage != null)
+		{
+			if (this._root.stage.focus != null && (Std.isOfType(this._root.stage.focus, TextField) #if starling || Std.isOfType(this._root.stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
+			{
+				return;
+			}
+		}
+		
 		var actions:Array<KeyAction> = this._keyActions[evt.keyCode];
 		if (actions == null) return;
 		
