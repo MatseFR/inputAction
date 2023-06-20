@@ -5,6 +5,7 @@ import openfl.display.DisplayObject;
 import openfl.display.Stage;
 import openfl.events.KeyboardEvent;
 import openfl.text.TextField;
+import openfl.text.TextFieldType;
 import valeditor.utils.ReverseIterator;
 
 /**
@@ -126,14 +127,14 @@ class KeyboardController extends InputController
 	{
 		if (this._rootIsStage)
 		{
-			if (this._stage.focus != null && (Std.isOfType(this._stage.focus, TextField) #if starling || Std.isOfType(this._stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
+			if (this._stage.focus != null && ((Std.isOfType(this._stage.focus, TextField) && cast(this._stage.focus, TextField).type == TextFieldType.INPUT) #if starling || Std.isOfType(this._stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
 			{
 				return;
 			}
 		}
 		else if (this._root.stage != null)
 		{
-			if (this._root.stage.focus != null && (Std.isOfType(this._root.stage.focus, TextField) #if starling || Std.isOfType(this._root.stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
+			if (this._root.stage.focus != null && ((Std.isOfType(this._root.stage.focus, TextField) && cast(this._root.stage.focus, TextField).type == TextFieldType.INPUT) #if starling || Std.isOfType(this._root.stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
 			{
 				return;
 			}
@@ -155,14 +156,14 @@ class KeyboardController extends InputController
 	{
 		if (this._rootIsStage)
 		{
-			if (this._stage.focus != null && (Std.isOfType(this._stage.focus, TextField) #if starling || Std.isOfType(this._stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
+			if (this._stage.focus != null && ((Std.isOfType(this._stage.focus, TextField) && cast(this._stage.focus, TextField).type == TextFieldType.INPUT) #if starling || Std.isOfType(this._stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
 			{
 				return;
 			}
 		}
 		else if (this._root.stage != null)
 		{
-			if (this._root.stage.focus != null && (Std.isOfType(this._root.stage.focus, TextField) #if starling || Std.isOfType(this._root.stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
+			if (this._root.stage.focus != null && ((Std.isOfType(this._root.stage.focus, TextField) && cast(this._root.stage.focus, TextField).type == TextFieldType.INPUT) #if starling || Std.isOfType(this._root.stage.focus, starling.text.TextField) #end )) // not sure the check for Starling TextField is needed
 			{
 				return;
 			}
