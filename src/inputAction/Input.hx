@@ -4,7 +4,7 @@ import juggler.animation.IAnimatable;
 import juggler.event.JugglerEvent;
 import openfl.errors.Error;
 import openfl.events.EventDispatcher;
-import valeditor.utils.ReverseIterator;
+import valedit.utils.ReverseIterator;
 
 /**
  * ...
