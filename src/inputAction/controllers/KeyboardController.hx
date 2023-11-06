@@ -6,7 +6,7 @@ import openfl.display.Stage;
 import openfl.events.KeyboardEvent;
 import openfl.text.TextField;
 import openfl.text.TextFieldType;
-import valeditor.utils.ReverseIterator;
+import valedit.utils.ReverseIterator;
 
 /**
  * ...
@@ -143,12 +143,19 @@ class KeyboardController extends InputController
 		var actions:Array<KeyAction> = this._keyActions[evt.keyCode];
 		if (actions == null) return;
 		
+		var isValidAction:Bool = false;
 		for (action in actions)
 		{
 			if (action.isValidDown(evt))
 			{
 				actionBegin(action.toInputAction(this, this._defaultChannel));
+				isValidAction = true;
 			}
+		}
+		
+		if (isValidAction)
+		{
+			evt.preventDefault(); // required to prevent the Brower from reacting to a shortcut
 		}
 	}
 
@@ -172,12 +179,19 @@ class KeyboardController extends InputController
 		var actions:Array<KeyAction> = this._keyActions[evt.keyCode];
 		if (actions == null) return;
 		
+		var isValidAction:Bool = false;
 		for (action in actions)
 		{
 			if (action.isValidUp(evt))
 			{
 				actionEnd(action.toInputAction(this, this._defaultChannel));
+				isValidAction = true;
 			}
+		}
+		
+		if (isValidAction)
+		{
+			evt.preventDefault(); // required to prevent the Brower from reacting to a shortcut
 		}
 	}
 
