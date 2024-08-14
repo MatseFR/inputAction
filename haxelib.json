@@ -4,7 +4,7 @@
 	"license": "MIT",
 	"tags": [ "openfl", "flash", "air", "js", "web", "cpp" ],
 	"description": "user input system based on CitrusEngine framework (as3)",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"releasenote": "initial release",
 	"contributors": [ "matse" ],
 	"dependencies": {
