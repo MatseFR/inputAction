@@ -111,6 +111,8 @@ class KeyboardController extends InputController
 				actions.splice(i, 1);
 			}
 		}
+		
+		if (actions.length == 0) removeKeyActions(keyCode);
 	}
 
 	public function removeKeyActions(keyCode:Int):Void
